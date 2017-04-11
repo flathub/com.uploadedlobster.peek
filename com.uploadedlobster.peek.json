@@ -1,0 +1,181 @@
+{
+  "app-id": "com.uploadedlobster.peek",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.24",
+  "sdk": "org.gnome.Sdk",
+  "command": "launch-peek",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=x11",
+    "--env=GDK_BACKEND=x11",
+    "--socket=wayland",
+    "--talk-name=org.freedesktop.FileManager1",
+    "--talk-name=org.gnome.Shell.Screencast",
+    "--filesystem=xdg-pictures",
+    "--filesystem=xdg-videos",
+    "--filesystem=xdg-desktop",
+    "--filesystem=xdg-run/dconf",
+    "--filesystem=~/.config/dconf:ro",
+    "--talk-name=ca.desrt.dconf",
+    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+  ],
+  "build-options" : {
+    "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+    "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+    "ldflags": "-fstack-protector-strong -Wl,-z,relro,-z,now",
+    "env": {
+      "V": "1"
+    }
+  },
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/share/gtk-doc",
+    "*.la"
+  ],
+  "modules": [
+    {
+      "name": "ffmpeg",
+      "config-opts": [
+        "--disable-debug",
+        "--disable-static",
+        "--enable-gpl",
+        "--enable-libvpx",
+        "--enable-libx264",
+        "--enable-shared",
+        "--enable-x11grab",
+        "--disable-ffplay",
+        "--disable-ffprobe",
+        "--disable-ffserver",
+        "--disable-doc",
+        "--disable-everything",
+        "--enable-decoder=libvpx_vp8",
+        "--enable-decoder=rawvideo",
+        "--enable-encoder=libx264",
+        "--enable-encoder=libvpx_vp8",
+        "--enable-encoder=rawvideo",
+        "--enable-encoder=pam",
+        "--enable-demuxer=avi",
+        "--enable-muxer=mp4",
+        "--enable-muxer=webm",
+        "--enable-muxer=rawvideo",
+        "--enable-filter=crop",
+        "--enable-filter=scale",
+        "--enable-protocol=file",
+        "--enable-indev=x11grab_xcb"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ffmpeg.org/releases/ffmpeg-3.2.4.tar.xz",
+          "sha256": "6e38ff14f080c98b58cf5967573501b8cb586e3a173b591f3807d8f0660daf7a"
+        }
+      ],
+      "modules": [
+        {
+          "name": "libx264",
+          "config-opts": [
+            "--enable-pic",
+            "--enable-shared"
+          ],
+          "build-options": {
+            "arch": {
+              "i386": {
+                "config-opts": [
+                  "--host=i386-pc-linux"
+                ]
+              }
+            }
+          },
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://git.videolan.org/git/x264.git",
+              "branch": "86b71982e131eaa70125f8d0e725fcade9c4c677"
+            }
+          ],
+          "cleanup": [
+            "/bin/x264"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "imagemagick",
+      "config-opts": [
+        "--enable-static=no",
+        "--disable-docs",
+        "--disable-deprecated",
+        "--without-autotrace",
+        "--without-bzlib",
+        "--without-djvu",
+        "--without-dps",
+        "--without-fftw",
+        "--without-fontconfig",
+        "--without-fpx",
+        "--without-freetype",
+        "--without-gvc",
+        "--without-jbig",
+        "--without-jpeg",
+        "--without-lcms",
+        "--without-lzma",
+        "--without-magick-plus-plus",
+        "--without-openexr",
+        "--without-openjp2",
+        "--without-pango",
+        "--without-png",
+        "--without-raqm",
+        "--without-tiff",
+        "--without-webp",
+        "--without-wmf",
+        "--without-x",
+        "--without-xml",
+        "--without-zlib"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "http://git.imagemagick.org/repos/ImageMagick.git",
+          "branch": "e12a51e9039a50a06338022d07cc5777f9f9cb98"
+        }
+      ]
+    },
+    {
+      "name": "keybinder3",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/kupferlauncher/keybinder/releases/download/keybinder-3.0-v0.3.2/keybinder-3.0-0.3.2.tar.gz",
+          "sha256": "e6e3de4e1f3b201814a956ab8f16dfc8a262db1937ff1eee4d855365398c6020"
+        }
+      ]
+    },
+    {
+      "name": "peek",
+      "buildsystem": "cmake",
+      "config-opts": [
+        "-DCMAKE_VERBOSE_MAKEFILE=TRUE"
+      ],
+      "build-options" : {
+        "cflags": "-L/app/lib"
+      },
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/phw/peek",
+          "branch": "v1.0.1",
+          "commit": "5c0532316637ff629a104dedc0e9585d7f92feff"
+        },
+        {
+          "type": "patch",
+          "path": "launch-command.patch"
+        }
+      ],
+      "post-install": [
+        "cp data/flatpak/launch-peek /app/bin",
+        "cp data/com.canonical.Unity.gschema.xml /app/share/glib-2.0/schemas",
+        "glib-compile-schemas /app/share/glib-2.0/schemas"
+      ]
+    }
+  ]
+}
