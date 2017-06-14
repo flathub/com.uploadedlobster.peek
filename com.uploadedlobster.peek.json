@@ -3,7 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "3.24",
   "sdk": "org.gnome.Sdk",
-  "command": "launch-peek",
+  "command": "peek",
   "finish-args": [
     "--share=ipc",
     "--socket=x11",
@@ -43,13 +43,14 @@
         "--enable-libvpx",
         "--enable-libx264",
         "--enable-shared",
-        "--enable-x11grab",
+        "--enable-libxcb",
+        "--enable-libxcb-xfixes",
+        "--disable-libxcb-shape",
         "--disable-ffplay",
         "--disable-ffprobe",
         "--disable-ffserver",
         "--disable-doc",
         "--disable-everything",
-        "--enable-decoder=libvpx_vp8",
         "--enable-decoder=rawvideo",
         "--enable-encoder=libx264",
         "--enable-encoder=libvpx_vp8",
@@ -62,13 +63,13 @@
         "--enable-filter=crop",
         "--enable-filter=scale",
         "--enable-protocol=file",
-        "--enable-indev=x11grab_xcb"
+        "--enable-indev=xcbgrab"
       ],
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-3.2.4.tar.xz",
-          "sha256": "6e38ff14f080c98b58cf5967573501b8cb586e3a173b591f3807d8f0660daf7a"
+          "url": "https://ffmpeg.org/releases/ffmpeg-3.3.2.tar.xz",
+          "sha256": "1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785"
         }
       ],
       "modules": [
@@ -78,20 +79,12 @@
             "--enable-pic",
             "--enable-shared"
           ],
-          "build-options": {
-            "arch": {
-              "i386": {
-                "config-opts": [
-                  "--host=i386-pc-linux"
-                ]
-              }
-            }
-          },
           "sources": [
             {
               "type": "git",
               "url": "https://git.videolan.org/git/x264.git",
-              "branch": "86b71982e131eaa70125f8d0e725fcade9c4c677"
+              "branch": "stable",
+              "commit": "d32d7bf1c6923a42cbd5ac2fd540ecbb009ba681"
             }
           ],
           "cleanup": [
@@ -136,7 +129,8 @@
         {
           "type": "git",
           "url": "http://git.imagemagick.org/repos/ImageMagick.git",
-          "branch": "e12a51e9039a50a06338022d07cc5777f9f9cb98"
+          "branch": "6.9.8-10",
+          "commit": "d0b34c978f6959f6981541692b3ba80556149cac"
         }
       ]
     },
@@ -163,16 +157,11 @@
         {
           "type": "git",
           "url": "https://github.com/phw/peek",
-          "branch": "v1.0.1",
-          "commit": "5c0532316637ff629a104dedc0e9585d7f92feff"
-        },
-        {
-          "type": "patch",
-          "path": "launch-command.patch"
+          "branch": "v1.0.3",
+          "commit": "257e5e30209fd7a8fc5d530deb56179fccdd0aed"
         }
       ],
       "post-install": [
-        "cp data/flatpak/launch-peek /app/bin",
         "cp data/com.canonical.Unity.gschema.xml /app/share/glib-2.0/schemas",
         "glib-compile-schemas /app/share/glib-2.0/schemas"
       ]
