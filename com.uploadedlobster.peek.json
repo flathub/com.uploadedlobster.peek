@@ -155,7 +155,7 @@
         {
           "type": "archive",
           "url": "https://github.com/phw/peek/archive/v1.0.3.tar.gz",
-          "commit": "bedb23a4da0b6f5c9e247a383435202ff7307347f39cd8816d256b3390a4c1ae"
+          "sha256": "bedb23a4da0b6f5c9e247a383435202ff7307347f39cd8816d256b3390a4c1ae"
         }
       ],
       "post-install": [
