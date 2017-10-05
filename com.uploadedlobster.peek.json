@@ -1,7 +1,7 @@
 {
   "app-id": "com.uploadedlobster.peek",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.24",
+  "runtime-version": "3.26",
   "sdk": "org.gnome.Sdk",
   "command": "peek",
   "finish-args": [
@@ -68,8 +68,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-3.3.2.tar.xz",
-          "sha256": "1998de1ab32616cbf2ff86efc3f1f26e76805ec5dc51e24c041c79edd8262785"
+          "url": "https://ffmpeg.org/releases/ffmpeg-3.3.4.tar.xz",
+          "sha256": "98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957"
         }
       ],
       "modules": [
@@ -84,7 +84,7 @@
               "type": "git",
               "url": "https://git.videolan.org/git/x264.git",
               "branch": "stable",
-              "commit": "d32d7bf1c6923a42cbd5ac2fd540ecbb009ba681"
+              "commit": "aaa9aa83a111ed6f1db253d5afa91c5fc844583f"
             }
           ],
           "cleanup": [
@@ -128,9 +128,9 @@
       "sources": [
         {
           "type": "git",
-          "url": "http://git.imagemagick.org/repos/ImageMagick.git",
-          "branch": "6.9.8-10",
-          "commit": "d0b34c978f6959f6981541692b3ba80556149cac"
+          "url": "https://github.com/ImageMagick/ImageMagick.git",
+          "branch": "6.9.9-12",
+          "commit": "8359cc4b039711baef43c3ea6108a801b11f1254"
         }
       ]
     },
@@ -157,8 +157,8 @@
         {
           "type": "git",
           "url": "https://github.com/phw/peek",
-          "branch": "v1.0.3",
-          "commit": "257e5e30209fd7a8fc5d530deb56179fccdd0aed"
+          "branch": "1.1.0",
+          "commit": "a2be37f64646c667cbbfdc73b332b0f4b10a2a65"
         }
       ],
       "post-install": [
