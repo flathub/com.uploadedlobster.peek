@@ -11,9 +11,7 @@
     "--socket=wayland",
     "--talk-name=org.freedesktop.FileManager1",
     "--talk-name=org.gnome.Shell.Screencast",
-    "--filesystem=xdg-pictures",
-    "--filesystem=xdg-videos",
-    "--filesystem=xdg-desktop",
+    "--filesystem=home",
     "--filesystem=xdg-run/dconf",
     "--filesystem=~/.config/dconf:ro",
     "--talk-name=ca.desrt.dconf",
@@ -51,16 +49,29 @@
         "--disable-ffserver",
         "--disable-doc",
         "--disable-everything",
+        "--enable-decoder=libvpx_vp8",
+        "--enable-decoder=h264",
+        "--enable-decoder=png",
         "--enable-decoder=rawvideo",
-        "--enable-encoder=libx264",
+        "--enable-encoder=apng",
+        "--enable-encoder=ffvhuff",
+        "--enable-encoder=gif",
         "--enable-encoder=libvpx_vp8",
-        "--enable-encoder=rawvideo",
-        "--enable-encoder=pam",
-        "--enable-demuxer=avi",
+        "--enable-encoder=libx264",
+        "--enable-encoder=libx264rgb",
+        "--enable-encoder=png",
+        "--enable-demuxer=image2",
+        "--enable-demuxer=matroska",
+        "--enable-muxer=apng",
+        "--enable-muxer=gif",
+        "--enable-muxer=image2",
+        "--enable-muxer=matroska",
         "--enable-muxer=mp4",
         "--enable-muxer=webm",
-        "--enable-muxer=rawvideo",
         "--enable-filter=crop",
+        "--enable-filter=fps",
+        "--enable-filter=palettegen",
+        "--enable-filter=paletteuse",
         "--enable-filter=scale",
         "--enable-protocol=file",
         "--enable-indev=xcbgrab"
@@ -68,8 +79,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-3.3.4.tar.xz",
-          "sha256": "98b97e1b908dfeb6aeb6d407e5a5eacdfc253a40c2d195f5867ed2d1d46ea957"
+          "url": "https://ffmpeg.org/releases/ffmpeg-3.4.tar.xz",
+          "sha256": "aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef"
         }
       ],
       "modules": [
@@ -94,47 +105,6 @@
       ]
     },
     {
-      "name": "imagemagick",
-      "config-opts": [
-        "--enable-static=no",
-        "--disable-docs",
-        "--disable-deprecated",
-        "--without-autotrace",
-        "--without-bzlib",
-        "--without-djvu",
-        "--without-dps",
-        "--without-fftw",
-        "--without-fontconfig",
-        "--without-fpx",
-        "--without-freetype",
-        "--without-gvc",
-        "--without-jbig",
-        "--without-jpeg",
-        "--without-lcms",
-        "--without-lzma",
-        "--without-magick-plus-plus",
-        "--without-openexr",
-        "--without-openjp2",
-        "--without-pango",
-        "--without-png",
-        "--without-raqm",
-        "--without-tiff",
-        "--without-webp",
-        "--without-wmf",
-        "--without-x",
-        "--without-xml",
-        "--without-zlib"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/ImageMagick/ImageMagick.git",
-          "branch": "6.9.9-12",
-          "commit": "8359cc4b039711baef43c3ea6108a801b11f1254"
-        }
-      ]
-    },
-    {
       "name": "keybinder3",
       "sources": [
         {
@@ -155,10 +125,9 @@
       },
       "sources": [
         {
-          "type": "git",
-          "url": "https://github.com/phw/peek",
-          "branch": "1.1.0",
-          "commit": "a2be37f64646c667cbbfdc73b332b0f4b10a2a65"
+          "type": "archive",
+          "url": "https://github.com/phw/peek/archive/1.2.0.tar.gz",
+          "sha256": "d6117baca6810d846831653023eb0517138a435a0f85fea9fc1c28421c0ccb2b"
         }
       ],
       "post-install": [
