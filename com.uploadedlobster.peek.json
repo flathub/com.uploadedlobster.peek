@@ -107,9 +107,6 @@
     {
       "name": "gifski",
       "buildsystem": "simple",
-      "build-options": {
-        "build-args": ["--share=network"]
-      },
       "sources": [{
         "type": "archive",
         "url": "https://github.com/ImageOptim/gifski/archive/0.6.2.tar.gz",
