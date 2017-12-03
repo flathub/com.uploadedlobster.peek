@@ -110,6 +110,7 @@
     {
       "name": "gifski",
       "buildsystem": "simple",
+      "skip-arches": ["aarch64", "arm"],
       "sources": [
         {
           "type": "archive",
