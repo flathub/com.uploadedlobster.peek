@@ -3,6 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "3.26",
   "sdk": "org.gnome.Sdk",
+  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "peek",
   "finish-args": [
     "--share=ipc",
@@ -21,8 +22,10 @@
     "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
     "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
     "ldflags": "-fstack-protector-strong -Wl,-z,relro,-z,now",
+    "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
-      "V": "1"
+      "V": "1",
+      "CARGO_HOME": "/run/build/gifski/cargo"
     }
   },
   "cleanup": [
@@ -102,6 +105,25 @@
             "/bin/x264"
           ]
         }
+      ]
+    },
+    {
+      "name": "gifski",
+      "buildsystem": "simple",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/ImageOptim/gifski/archive/0.6.2.tar.gz",
+          "sha256": "4f0379aa05a5e99fd6a9efb851efa7553e9663ec800ac7247fb7e26505a4b225"
+        },
+        {
+          "type": "archive",
+          "path": "gifski-vendor.tar.xz"
+        }
+      ],
+      "build-commands": [
+        "cargo build --release",
+        "install -Dm755 target/release/gifski /app/bin/gifski"
       ]
     },
     {
