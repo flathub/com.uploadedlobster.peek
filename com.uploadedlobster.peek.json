@@ -149,8 +149,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/phw/peek/archive/1.2.0.tar.gz",
-          "sha256": "d6117baca6810d846831653023eb0517138a435a0f85fea9fc1c28421c0ccb2b"
+          "url": "https://github.com/phw/peek/archive/1.2.1.tar.gz",
+          "sha256": "7035ad6817306bf93b0052bf989120793e26b3fbcba51dda3cdf345342214af5"
         }
       ],
       "post-install": [
