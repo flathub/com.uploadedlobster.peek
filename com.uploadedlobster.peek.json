@@ -16,7 +16,8 @@
     "--filesystem=xdg-run/dconf",
     "--filesystem=~/.config/dconf:ro",
     "--talk-name=ca.desrt.dconf",
-    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+    "--env=LD_LIBRARY_PATH=/app/lib"
   ],
   "build-options" : {
     "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
@@ -82,8 +83,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-3.4.tar.xz",
-          "sha256": "aeee06e4d8b18d852c61ebbfe5e1bb7014b1e118e8728c1c2115f91e51bffbef"
+          "url": "https://ffmpeg.org/releases/ffmpeg-3.4.1.tar.xz",
+          "sha256": "5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0"
         }
       ],
       "modules": [
