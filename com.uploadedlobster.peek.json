@@ -1,7 +1,7 @@
 {
   "app-id": "com.uploadedlobster.peek",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.26",
+  "runtime-version": "3.30",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "peek",
@@ -20,9 +20,6 @@
     "--env=LD_LIBRARY_PATH=/app/lib"
   ],
   "build-options" : {
-    "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
-    "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
-    "ldflags": "-fstack-protector-strong -Wl,-z,relro,-z,now",
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
       "V": "1",
@@ -86,6 +83,17 @@
         }
       ],
       "modules": [
+        {
+          "name": "yasm",
+          "cleanup": ["*"],
+          "sources": [
+            {
+              "type": "archive",
+              "url": "http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz",
+              "sha256": "3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f"
+            }
+          ]
+        },
         {
           "name": "libx264",
           "config-opts": [
