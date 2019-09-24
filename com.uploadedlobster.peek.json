@@ -47,7 +47,6 @@
         "--disable-libxcb-shape",
         "--disable-ffplay",
         "--disable-ffprobe",
-        "--disable-ffserver",
         "--disable-doc",
         "--disable-everything",
         "--enable-bsf=vp9_superframe",
