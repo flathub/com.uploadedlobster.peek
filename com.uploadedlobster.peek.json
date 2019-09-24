@@ -1,7 +1,7 @@
 {
   "app-id": "com.uploadedlobster.peek",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.34",
+  "runtime-version": "3.32",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "peek",
@@ -126,7 +126,7 @@
           "type": "archive",
           "url": "https://s3.eu-central-1.amazonaws.com/download.uploadedlobster.com/gifski-vendor-0.7.3-3.tar.xz",
           "sha256": "22298a526f57f49435640304ef248d910ccebd709f33ebf4a0acee043e954fc0"
-         }
+        }
       ],
       "build-commands": [
         "cargo build --release --features=openmp --verbose",
