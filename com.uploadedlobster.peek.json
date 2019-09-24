@@ -119,9 +119,14 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/ImageOptim/gifski/archive/0.9.1.tar.gz",
-          "sha256": "f39a6e510e825bf4b43aebd1d7fb581d3b59a11bf7521bf6f507d4b0fa684b76"
-        }
+          "url": "https://github.com/ImageOptim/gifski/archive/0.7.3.tar.gz",
+          "sha256": "0db038fa91764295b0caf473bfc09e577b926260f5f116687600ae7140811721"
+        },
+        {
+          "type": "archive",
+          "url": "https://s3.eu-central-1.amazonaws.com/download.uploadedlobster.com/gifski-vendor-0.7.3-3.tar.xz",
+          "sha256": "22298a526f57f49435640304ef248d910ccebd709f33ebf4a0acee043e954fc0"
+         }
       ],
       "build-commands": [
         "cargo build --release --features=openmp --verbose",
