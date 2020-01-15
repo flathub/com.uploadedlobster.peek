@@ -1,7 +1,7 @@
 {
   "app-id": "com.uploadedlobster.peek",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.32",
+  "runtime-version": "3.34",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "peek",
@@ -13,16 +13,11 @@
     "--talk-name=org.freedesktop.FileManager1",
     "--talk-name=org.gnome.Shell.Screencast",
     "--filesystem=home",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=~/.config/dconf:ro",
-    "--talk-name=ca.desrt.dconf",
-    "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
     "--env=LD_LIBRARY_PATH=/app/lib"
   ],
   "build-options" : {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
-      "V": "1",
       "CARGO_HOME": "/run/build/gifski/cargo"
     }
   },
