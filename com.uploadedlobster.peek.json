@@ -19,7 +19,6 @@
   "build-options" : {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
-      "V": "1",
       "CARGO_HOME": "/run/build/gifski/cargo"
     }
   },
@@ -116,17 +115,12 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/ImageOptim/gifski/archive/0.7.3.tar.gz",
-          "sha256": "0db038fa91764295b0caf473bfc09e577b926260f5f116687600ae7140811721"
-        },
-        {
-          "type": "archive",
-          "url": "https://s3.eu-central-1.amazonaws.com/download.uploadedlobster.com/gifski-vendor-0.7.3-3.tar.xz",
-          "sha256": "22298a526f57f49435640304ef248d910ccebd709f33ebf4a0acee043e954fc0"
+          "url": "https://github.com/phw/gifski-bundle/releases/download/0.10.2-4/gifski-bundle-0.10.2.tar.xz",
+          "sha256": "e7e2cb182da91ca46b46a31ecaee8236d48c573b059f51a95cc70e22e4a0f0d4"
         }
       ],
       "build-commands": [
-        "cargo build --release --features=openmp --verbose",
+        "cargo build --release --features=openmp --verbose --offline",
         "install -Dm755 target/release/gifski /app/bin/gifski"
       ]
     },
