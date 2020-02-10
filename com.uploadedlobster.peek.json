@@ -1,7 +1,7 @@
 {
   "app-id": "com.uploadedlobster.peek",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.32",
+  "runtime-version": "3.34",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
   "command": "peek",
@@ -13,16 +13,12 @@
     "--talk-name=org.freedesktop.FileManager1",
     "--talk-name=org.gnome.Shell.Screencast",
     "--filesystem=home",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=~/.config/dconf:ro",
-    "--talk-name=ca.desrt.dconf",
     "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
     "--env=LD_LIBRARY_PATH=/app/lib"
   ],
   "build-options" : {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
-      "V": "1",
       "CARGO_HOME": "/run/build/gifski/cargo"
     }
   },
@@ -77,8 +73,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz",
-          "sha256": "cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4"
+          "url": "https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz",
+          "sha256": "cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c"
         }
       ],
       "modules": [
@@ -103,7 +99,7 @@
             {
               "type": "git",
               "url": "https://git.videolan.org/git/x264.git",
-              "commit": "72db437770fd1ce3961f624dd57a8e75ff65ae0b"
+              "commit": "1771b556ee45207f8711744ccbd5d42a3949b14c"
             }
           ],
           "cleanup": [
@@ -119,17 +115,12 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/ImageOptim/gifski/archive/0.7.3.tar.gz",
-          "sha256": "0db038fa91764295b0caf473bfc09e577b926260f5f116687600ae7140811721"
-        },
-        {
-          "type": "archive",
-          "url": "https://s3.eu-central-1.amazonaws.com/download.uploadedlobster.com/gifski-vendor-0.7.3-3.tar.xz",
-          "sha256": "22298a526f57f49435640304ef248d910ccebd709f33ebf4a0acee043e954fc0"
+          "url": "https://github.com/phw/gifski-bundle/releases/download/0.10.2-4/gifski-bundle-0.10.2.tar.xz",
+          "sha256": "e7e2cb182da91ca46b46a31ecaee8236d48c573b059f51a95cc70e22e4a0f0d4"
         }
       ],
       "build-commands": [
-        "cargo build --release --features=openmp --verbose",
+        "cargo build --release --features=openmp --verbose --offline",
         "install -Dm755 target/release/gifski /app/bin/gifski"
       ]
     },
