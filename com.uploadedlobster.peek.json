@@ -146,8 +146,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/phw/peek/archive/1.4.0.tar.gz",
-          "sha256": "506c5797102629ff4a319c5fcc4eb6b771ffd680bb83ea07c1e5e8166000d605"
+          "url": "https://github.com/phw/peek/archive/1.5.1.tar.gz",
+          "sha256": "d2b52297d3941db2f10ad4dd00a6d5606728c0fee6af5f1594a036f88e478237"
         }
       ]
     }
