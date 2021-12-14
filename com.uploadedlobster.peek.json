@@ -11,6 +11,7 @@
     "--env=GDK_BACKEND=x11",
     "--socket=wayland",
     "--talk-name=org.freedesktop.FileManager1",
+    "--talk-name=org.gnome.Shell",
     "--talk-name=org.gnome.Shell.Screencast",
     "--filesystem=home",
     "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
