@@ -114,6 +114,9 @@
     {
       "name": "gifski",
       "buildsystem": "simple",
+      "build-options": {
+        "build-args": ["--share=network"]
+      },
       "skip-arches": ["aarch64", "arm"],
       "sources": [
         {
@@ -123,7 +126,7 @@
         }
       ],
       "build-commands": [
-        "cargo build --release --features=openmp --verbose --offline",
+        "cargo build --release --features=openmp --verbose",
         "install -Dm755 target/release/gifski /app/bin/gifski"
       ]
     },
