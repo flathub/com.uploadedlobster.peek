@@ -18,10 +18,10 @@
     "--env=LD_LIBRARY_PATH=/app/lib"
   ],
   "build-options" : {
-    "append-path": "/usr/lib/sdk/rust-stable/bin",
-    "env": {
-      "CARGO_HOME": "/run/build/gifski/cargo"
-    }
+    "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+    "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+    "ldflags": "-fstack-protector-strong -Wl,-z,relro,-z,now",
+    "append-path": "/usr/lib/sdk/rust-stable/bin"
   },
   "cleanup": [
     "/include",
