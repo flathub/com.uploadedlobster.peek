@@ -100,9 +100,7 @@
             {
               "type": "git",
               "url": "https://code.videolan.org/videolan/x264.git",
-              "tag": "stable",
-              "sha256": "5db6aa6cab1b146e07b60cc1736a01f21da01154"
-              
+              "commit": "5db6aa6cab1b146e07b60cc1736a01f21da01154"
             }
           ],
           "cleanup": [
