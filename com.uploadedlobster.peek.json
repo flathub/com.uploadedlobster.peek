@@ -1,9 +1,11 @@
 {
   "app-id": "com.uploadedlobster.peek",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "3.38",
+  "runtime-version": "42",
   "sdk": "org.gnome.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "sdk-extensions": [
+     "org.freedesktop.Sdk.Extension.rust-stable"
+  ],
   "command": "peek",
   "finish-args": [
     "--share=ipc",
@@ -11,6 +13,7 @@
     "--env=GDK_BACKEND=x11",
     "--socket=wayland",
     "--talk-name=org.freedesktop.FileManager1",
+    "--talk-name=org.gnome.Shell",
     "--talk-name=org.gnome.Shell.Screencast",
     "--filesystem=home",
     "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
@@ -18,10 +21,10 @@
     "--filesystem=xdg-videos"
   ],
   "build-options" : {
-    "append-path": "/usr/lib/sdk/rust-stable/bin",
-    "env": {
-      "CARGO_HOME": "/run/build/gifski/cargo"
-    }
+    "cflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+    "cxxflags": "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2",
+    "ldflags": "-fstack-protector-strong -Wl,-z,relro,-z,now",
+    "append-path": "/usr/lib/sdk/rust-stable/bin"
   },
   "cleanup": [
     "/include",
@@ -74,8 +77,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz",
-          "sha256": "ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb"
+          "url": "https://ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz",
+          "sha256": "eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02"
         }
       ],
       "modules": [
@@ -100,9 +103,7 @@
             {
               "type": "git",
               "url": "https://code.videolan.org/videolan/x264.git",
-              "tag": "stable",
-              "sha256": "cde9a93319bea766a92e306d69059c76de970190"
-              
+              "commit": "5db6aa6cab1b146e07b60cc1736a01f21da01154"
             }
           ],
           "cleanup": [
@@ -114,16 +115,21 @@
     {
       "name": "gifski",
       "buildsystem": "simple",
-      "skip-arches": ["aarch64", "arm"],
+      "build-options": {
+        "env": {
+          "CARGO_HOME": "/run/build/gifski/cargo"
+        }
+      },
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/phw/gifski-bundle/releases/download/0.10.2-4/gifski-bundle-0.10.2.tar.xz",
-          "sha256": "e7e2cb182da91ca46b46a31ecaee8236d48c573b059f51a95cc70e22e4a0f0d4"
-        }
+          "url": "https://github.com/ImageOptim/gifski/archive/refs/tags/1.5.0.tar.gz",
+          "sha256": "a55b285410c1558a5b6489b01d8dea1e28206220d383e6a2aa710378dfdc182c"
+        },
+        "gifski-cargo-sources.json"
       ],
       "build-commands": [
-        "cargo build --release --features=openmp --verbose --offline",
+        "cargo --offline build --release --verbose --features=openmp",
         "install -Dm755 target/release/gifski /app/bin/gifski"
       ]
     },
