@@ -1,0 +1,62 @@
+From 308d9a07343576d4ad906cb956d1a35e56852aeb Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Tue, 11 Jun 2024 01:51:09 +0300
+Subject: [PATCH] appdata: Update appdata
+
+- Fix appdata papercuts
+---
+ data/com.uploadedlobster.peek.appdata.xml.in | 11 +++--------
+ data/com.uploadedlobster.peek.desktop.in     |  2 +-
+ 2 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/data/com.uploadedlobster.peek.appdata.xml.in b/data/com.uploadedlobster.peek.appdata.xml.in
+index 5e98780..d6368ae 100644
+--- a/data/com.uploadedlobster.peek.appdata.xml.in
++++ b/data/com.uploadedlobster.peek.appdata.xml.in
+@@ -50,27 +50,22 @@
+     </screenshot>
+   </screenshots>
+ 
+-  <categories>
+-    <category>Graphics</category>
+-    <category>Utility</category>
+-    <category>GNOME</category>
+-    <category>GTK</category>
+-  </categories>
+-
+   <kudos>
+     <kudo>AppMenu</kudo>
+     <kudo>HiDpiIcon</kudo>
+     <kudo>ModernToolkit</kudo>
+     <kudo>Notifications</kudo>
+   </kudos>
+ 
+-  <url type="homepage">http://peek.uploadedlobster.com</url>
++  <url type="homepage">https://github.com/phw/peek</url>
+   <!-- <url type="help">http://peek.uploadedlobster.com</url> -->
+   <url type="faq">https://github.com/phw/peek#frequently-asked-questions</url>
+   <url type="bugtracker">https://github.com/phw/peek/issues</url>
++  <url type="vcs-browser">https://github.com/phw/peek</url>
+   <!-- <url type="translate">https://hosted.weblate.org/projects/peek/translations/</url> -->
+ 
+   <translation type="gettext">peek</translation>
++  <launchable type="desktop-id">com.uploadedlobster.peek.desktop</launchable>
+ 
+   <provides>
+     <binary>peek</binary>
+diff --git a/data/com.uploadedlobster.peek.desktop.in b/data/com.uploadedlobster.peek.desktop.in
+index 1ec9720..980c1a4 100644
+--- a/data/com.uploadedlobster.peek.desktop.in
++++ b/data/com.uploadedlobster.peek.desktop.in
+@@ -6,7 +6,7 @@ Comment=Record short animated GIF images from your screen
+ Keywords=screencast;screen recorder;screen capture;GIF;WebM;APNG;
+ Icon=com.uploadedlobster.peek
+ Type=Application
+-Categories=GTK;GNOME;Graphics;2DGraphics;AudioVideo;Video;Recorder;
++Categories=GTK;GNOME;Graphics;Utility;2DGraphics;AudioVideo;Video;Recorder;
+ StartupNotify=true
+ Terminal=false
+ DBusActivatable=true
+--
+libgit2 1.7.2
+
